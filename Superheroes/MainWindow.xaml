@@ -1,0 +1,46 @@
+﻿<Window x:Class="Superheroes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Superheroes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <local:BooleanConverter x:Key="Conversor"></local:BooleanConverter>
+        <local:Configuracion x:Key="Conf" AjusteImagen="fill"></local:Configuracion>
+    </Window.Resources>
+    
+    <DockPanel>
+        <StackPanel x:Name="PrincipalStackPanel" DockPanel.Dock="Right" Margin="20" Width="300">
+            <TextBlock Margin="5">Nombre</TextBlock>
+            <TextBox Margin="5" Text="{Binding Nombre, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBlock Margin="5" >Enemigo</TextBlock>
+            <TextBox Margin="5" Text="{Binding Enemigo, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <TextBlock Margin="5" >Foto</TextBlock>
+            <TextBox Margin="5" Text="{Binding Foto, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <CheckBox Margin="5" IsChecked="{Binding Vengador, UpdateSourceTrigger=PropertyChanged}">¿Vengador?</CheckBox>
+            <Button x:Name="EditarButton" HorizontalAlignment="Left" Width="60" Margin="5" Click="EditarButton_Click" >Editar</Button>
+        </StackPanel>
+        <Grid DockPanel.Dock="Bottom" Height="50" Margin="10" x:Name="InformacionGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock>Nombre: </TextBlock>
+            <TextBlock Grid.Column="1" Text="{Binding Nombre}"></TextBlock>
+            <TextBlock Grid.Row="1">Enemigo:</TextBlock>
+            <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding Enemigo}"></TextBlock>
+            <TextBlock Grid.Row="2">¿Vengadores?</TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Vengador, Converter={StaticResource Conversor}}"></TextBlock>
+        </Grid>
+        <Image x:Name="DaredevilImage" Source="{Binding Foto}" Stretch="{Binding AjusteImagen, Source={StaticResource Conf}}">
+            
+        </Image>
+    </DockPanel>
+</Window>
