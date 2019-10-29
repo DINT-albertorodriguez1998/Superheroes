@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Superheroes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Icon="batman_comics.ico">
     <Window.Resources>
         <local:BooleanConverter x:Key="Conversor"></local:BooleanConverter>
         <local:Configuracion x:Key="Conf" AjusteImagen="fill"></local:Configuracion>
